@@ -1,8 +1,6 @@
 package validator
 
 import (
-	"fmt"
-
 	"github.com/go-playground/locales/en"
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
@@ -29,7 +27,6 @@ func Validate(Object interface{}) ([]string, bool) {
 	if err != nil {
 		if errs, ok := err.(validator.ValidationErrors); ok {
 			for _, e := range errs {
-				fmt.Println(e.Translate(translator))
 				ValidationErrors = append(ValidationErrors, e.Translate(translator))
 			}
 			return ValidationErrors, false
